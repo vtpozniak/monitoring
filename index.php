@@ -9,8 +9,5 @@ function roundsize($size){
     return(round($size,1)." ".$iec[$i]);
 }
 
-$b = disk_total_space('/');
-$c = disk_free_space('/');
-
-var_dump(roundsize($b));
-var_dump(roundsize($c));
+$b = roundsize(disk_total_space('/'));
+$c = roundsize(disk_free_space('/'));
