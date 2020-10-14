@@ -112,6 +112,7 @@ class Db
         }
     }
 
+
     public function lastInsertId()
     {
         return $this->pdo->lastInsertId();
