@@ -3,6 +3,9 @@
 include 'Db.php';
 use Datastart\Db;
 
+
+
+
 class save_data
 {
 
@@ -28,29 +31,58 @@ public function roundsize($size){
     {
         $config = require 'config.php';
         $db = new Db($config['db']);
-        $rez = $db->query('SELECT data FROM `check` WHERE id ORDER BY id DESC LIMIT 1 ');
 
-//        while ($dir = mysqli_fetch_assoc($rez)){
-//            print_r($dir);
-//        }
-        return $rez;
-
+        return $db->query('SELECT data FROM `check` WHERE id ORDER BY id DESC LIMIT 1 ');
     }
 
 }
 $rez = new save_data();
-time();
-echo time();
+//$t = date("Y-m-d H:i:s");
+//$t = time();
+//$tt = strtotime('+ 1', $tt );
+//$startTime = time("H:i",strtotime('-30 minutes',$t));
+//echo $t;
+//$r = $rez->checkData();
+//$arr = $r[0];
+//echo "</br>";
+//$toy = implode(",", $arr);
+//$tt = strtotime("$toy");
+//echo $tt;
+//echo "</br>";
+//if ($t >= $tt + 300){
 
-//for( ; ; ){
-//    $b = $rez->roundsize(disk_total_space('/'));
-//    $c = $rez->roundsize(disk_free_space('/'));
-//    $rez->saveDb($b, $c);
-//
-//    sleep(300);
 //}
-$r = $rez->checkData();
-echo "</br>";
-//$r = strtotime(+300);
-print_r($r);
 
+for( ; ; ){
+
+    if ($t >= $tt + 30){
+        $b = $rez->roundsize(disk_total_space('/'));
+        $c = $rez->roundsize(disk_free_space('/'));
+        $rez->saveDb($b, $c);
+        echo "dssfsd";
+
+    }
+    $r = $rez->checkData();
+    $arr = $r[0];
+    $toy = implode(",", $arr);
+    $tt = strtotime("$toy");
+    $t = time();
+
+
+}
+
+//$new = strtotime('', $arr);
+
+//
+//echo $new;
+//$startTime = date("H:i",strtotime('',$t));
+//$endTime = date("H:i",strtotime('+30 minutes',$t));
+//echo $startTime;
+//echo $endTime;
+
+
+
+
+
+
+//phpinfo();
